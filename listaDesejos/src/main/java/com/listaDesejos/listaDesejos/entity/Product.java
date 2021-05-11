@@ -21,7 +21,7 @@ public class Product implements Serializable {
 
     @Column
     @NotNull
-    private double prace;
+    private double price;
 
     @Column
     @NotNull
@@ -45,11 +45,11 @@ public class Product implements Serializable {
     }
 
     public double getPrace() {
-        return prace;
+        return price;
     }
 
     public void setPrace(double prace) {
-        this.prace = prace;
+        this.price = prace;
     }
 
     public String getDescripcion() {

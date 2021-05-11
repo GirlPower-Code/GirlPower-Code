@@ -18,7 +18,7 @@ public class WhishList implements Serializable {
     @JoinColumn (name= "idClient")
     private Client client;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn (name="idProduct")
     private Product product;
 
