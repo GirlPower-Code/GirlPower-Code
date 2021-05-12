@@ -5,8 +5,8 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name="whishlist")
-public class WhishList implements Serializable {
+@Table(name="wishlist")
+public class WishList implements Serializable {
 
     private static final long serialVersionUID =1l;
 
