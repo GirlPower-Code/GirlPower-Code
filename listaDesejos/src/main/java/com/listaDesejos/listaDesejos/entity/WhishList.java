@@ -18,9 +18,9 @@ public class WhishList implements Serializable {
     @JoinColumn (name= "idClient")
     private Client client;
 
-    @ManyToOne
+    @OneToMany
     @JoinColumn (name="idProduct")
-    private Product product;
+    private List<Product> product;
 
     public Long getID() {
         return ID;
@@ -38,11 +38,11 @@ public class WhishList implements Serializable {
         this.client = client;
     }
 
-    public Product getProduct() {
+    public List<Product> getProduct() {
         return product;
     }
 
-    public void setProduct(Product product) {
+    public void setProduct(List<Product> product) {
         this.product = product;
     }
 }
