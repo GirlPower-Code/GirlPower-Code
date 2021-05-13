@@ -39,7 +39,6 @@ public class Client implements Serializable {
     @NotNull
     private String password;
 
-
     public Long getID() {
         return ID;
     }
