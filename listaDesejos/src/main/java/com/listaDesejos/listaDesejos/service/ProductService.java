@@ -5,6 +5,8 @@ import com.listaDesejos.listaDesejos.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class ProductService {
 
@@ -17,7 +19,7 @@ public class ProductService {
     }
 
     //exibir produto
-    public Product exibirProduto(long id) {
-        return productRepository.findByID(id);
+    public Optional<Product> exibirProduto(String name) {
+        return productRepository.findByname(name);
     }
 }

@@ -1,16 +1,19 @@
 package com.listaDesejos.listaDesejos.service;
 
+import com.listaDesejos.listaDesejos.entity.Client;
+import com.listaDesejos.listaDesejos.entity.Product;
 import com.listaDesejos.listaDesejos.entity.WishList;
 import com.listaDesejos.listaDesejos.repository.WishlistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class WishListService {
 
     @Autowired
     private WishlistRepository wishlistRepository;
-
 
     //add wishlis no banco de dados
     public WishList adicionarWishList(WishList wishList){
@@ -22,10 +25,7 @@ public class WishListService {
         return wishlistRepository.findByID(id);
     }
 
-
-
-
-
-
-
+    public WishList getProductFromWishlist(Client client){
+        return wishlistRepository.findByclient(client);
+    }
 }
