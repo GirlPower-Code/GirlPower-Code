@@ -27,7 +27,6 @@ public class Product implements Serializable {
     @NotNull
     private String descripcion;
 
-
     public Long getID() {
         return ID;
     }

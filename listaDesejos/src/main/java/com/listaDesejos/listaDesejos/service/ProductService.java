@@ -18,12 +18,6 @@ public class ProductService {
 
     //exibir produto
     public Product exibirProduto(long id) {
-        return productRepository.findById(id);
+        return productRepository.findByID(id);
     }
-
-    //deletar produto
-    public Product deletarProduto(long id) {
-        return productRepository.delete(id);
-    }
-
 }
