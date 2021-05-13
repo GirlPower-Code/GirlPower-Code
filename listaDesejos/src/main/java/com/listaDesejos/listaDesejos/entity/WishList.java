@@ -19,7 +19,7 @@ public class WishList implements Serializable {
     private Client client;
 
     @OneToMany
-    @JoinColumn (name="idProduct")
+    @Column (name="idProduct")
     private List<Product> product;
 
     public Long getID() {
