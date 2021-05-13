@@ -4,6 +4,7 @@ import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name="product")
@@ -21,7 +22,7 @@ public class Product implements Serializable {
 
     @Column
     @NotNull
-    private double price;
+    private BigDecimal price;
 
     @Column
     @NotNull
@@ -43,12 +44,12 @@ public class Product implements Serializable {
         this.name = name;
     }
 
-    public double getPrace() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrace(double prace) {
-        this.price = prace;
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
     public String getDescripcion() {
