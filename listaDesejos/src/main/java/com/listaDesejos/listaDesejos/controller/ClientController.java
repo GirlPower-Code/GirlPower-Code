@@ -16,6 +16,7 @@ public class ClientController {
     @Autowired
     ClientService clientService;
 
+
     @PostMapping("/register")
     public Client registerClient(@RequestBody Client client){
         Optional<Client> searchClient = clientService.getClient(client.getEmail());

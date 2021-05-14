@@ -5,6 +5,8 @@ import com.listaDesejos.listaDesejos.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class ProductService {
 
@@ -20,4 +22,10 @@ public class ProductService {
     public Product exibirProduto(long id) {
         return productRepository.findByID(id);
     }
+
+    //deletar produto
+    public Optional<Product> deletarProduto(long id) { return productRepository.deleteById(id);}
+
+    //procurar prod
+    public Optional<Product> buscarProduto (long id) { return productRepository.deleteById(id);}
 }
