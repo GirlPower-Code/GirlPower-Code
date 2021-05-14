@@ -25,7 +25,7 @@ public class WishListService {
         return wishlistRepository.findByID(id);
     }
 
-    public WishList getProductFromWishlist(Client client){
+    public WishList getWishlist(Client client){
         return wishlistRepository.findByclient(client);
     }
 }

@@ -25,17 +25,17 @@ public class WishListController {
     ClientService clientService;
 
     // Pesquisar produto na wishlist
-    @GetMapping("/search/{id}/{name}")
-    public Boolean findProduct(@PathVariable long id, @PathVariable String name){
+    @GetMapping("/search/{id}")
+    public boolean findProduct(@PathVariable long id, @RequestParam(value = "name") String name){
         Optional<Product> searchProduct = productService.exibirProduto(name);
         Optional<Client> searchClient = clientService.getClientById(id);
 
         if( searchProduct.isPresent() && searchClient.isPresent()){
-            WishList wishlist = wishListService.getProductFromWishlist(searchClient.get());
+            WishList wishlist = wishListService.getWishlist(searchClient.get());
 
             return wishlist.getProduct().contains(searchProduct.get());
         }
 
-        return null;
+        return false;
     }
 }
