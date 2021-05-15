@@ -64,6 +64,19 @@ public class WishListController {
         return null;
     }
 
+    @GetMapping("/list/{id}")
+    public List<Product> listProducts(@PathVariable long id){
+        Optional<Client> searchClient = clientService.getClientById(id);
+
+        if(searchClient.isPresent()) {
+            List<Product> wishlist = wishListService.getWishlist(searchClient.get()).getProduct();
+
+            return wishlist;
+        }
+
+        return null;
+    }
+
     // Pesquisar produto na wishlist
     @GetMapping("/find/{id}")
     public ResponseEntity<Product> findProduct(@PathVariable long id, @RequestParam(value = "name") String name){
