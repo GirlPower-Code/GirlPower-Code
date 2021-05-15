@@ -4,12 +4,20 @@ import com.listaDesejos.listaDesejos.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface ProductRepository extends JpaRepository<Product,Long> {
 
-    //registrar produto
+    //cadastrar um produto no banco
     Product save(Product product);
 
-    //exibir produto
-    Product findByID(long ID);
+    //retorna todos os produtos do banco
+    List<Product> findAll();
+
+    //buscar produto no banco
+    Product findByID(long id);
+
+    //excluir produto no banco
+    void deleteByID(long id);
 }

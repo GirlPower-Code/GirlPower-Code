@@ -25,7 +25,7 @@ public class Product implements Serializable {
 
     @Column
     @NotNull
-    private String descripcion;
+    private String description;
 
     public Long getID() {
         return ID;
@@ -43,19 +43,19 @@ public class Product implements Serializable {
         this.name = name;
     }
 
-    public double getPrace() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrace(double prace) {
-        this.price = prace;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
