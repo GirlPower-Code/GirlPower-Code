@@ -27,8 +27,8 @@ public class WishListService {
         return wishlistRepository.save(wishList);
     }
 
-    public WishList addWishToWishlist(long id, Product product){
-        WishList wishList = wishlistRepository.findByID(id);
+    public WishList addWishToWishlist(long id_wishlist, Product product){
+        WishList wishList = wishlistRepository.findByID(id_wishlist);
         wishList.getProduct().add(product);
 
         return wishlistRepository.save(wishList);

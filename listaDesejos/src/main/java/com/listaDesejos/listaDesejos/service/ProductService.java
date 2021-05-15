@@ -22,4 +22,8 @@ public class ProductService {
     public Optional<Product> exibirProduto(String name) {
         return productRepository.findByname(name);
     }
+
+    public Optional<Product> findProductById(long id){
+        return productRepository.findByID(id);
+    }
 }

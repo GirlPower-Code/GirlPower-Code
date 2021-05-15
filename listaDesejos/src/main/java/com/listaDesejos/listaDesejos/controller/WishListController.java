@@ -34,31 +34,31 @@ public class WishListController {
         return wishListService.createWishList(wishList);
     }
 
-    @PostMapping("/add/{id}")
-    public WishList addProduct(@PathVariable long id, @RequestParam(value = "name") String name){
+    @PostMapping("/add/{id_client}/{id_prod}")
+    public WishList addProduct(@PathVariable long id_prod, @PathVariable long id_client){
 
-        Optional<Client> searchClient = clientService.getClientById(id);
-        Optional<Product> searchProduct = productService.exibirProduto(name);
+        Optional<Client> searchClient = clientService.getClientById(id_client);
+        Optional<Product> searchProduct = productService.findProductById(id_prod);
 
-        if(searchClient.isPresent()) {
-            Long wishlist = wishListService.getWishlist(searchClient.get()).getID();
+        if(searchClient.isPresent() && searchProduct.isPresent()) {
+            Long id_wishlist = wishListService.getWishlist(searchClient.get()).getID();
 
-            return wishListService.addWishToWishlist(wishlist, searchProduct.get());
+            return wishListService.addWishToWishlist(id_wishlist, searchProduct.get());
         }
 
         return null;
     }
 
-    @DeleteMapping("/delete/{id}")
-    public WishList deleteProduct(@PathVariable long id, @RequestParam(value = "name") String name){
+    @DeleteMapping("/delete/{id_client}/{id_prod}")
+    public WishList deleteProduct(@PathVariable long id_client, @PathVariable long id_prod){
 
-        Optional<Client> searchClient = clientService.getClientById(id);
-        Optional<Product> searchProduct = productService.exibirProduto(name);
+        Optional<Client> searchClient = clientService.getClientById(id_client);
+        Optional<Product> searchProduct = productService.findProductById(id_prod);
 
-        if(searchClient.isPresent()) {
-            Long wishlist = wishListService.getWishlist(searchClient.get()).getID();
+        if(searchClient.isPresent() && searchProduct.isPresent()) {
+            Long id_wishlist = wishListService.getWishlist(searchClient.get()).getID();
 
-            return wishListService.deleteWishToWishlist(wishlist, searchProduct.get());
+            return wishListService.deleteWishToWishlist(id_wishlist, searchProduct.get());
         }
 
         return null;
