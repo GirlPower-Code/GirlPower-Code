@@ -18,7 +18,9 @@ public class ClientService {
         return clientRepository.save(client);
     }
 
-    public Optional<Client> getClient(String email) {
-        return clientRepository.findByemail(email);
+    //Procurar cliente
+    public Client registeredClient(String email) {
+        return clientRepository.findByEmail(email);
     }
+
 }
