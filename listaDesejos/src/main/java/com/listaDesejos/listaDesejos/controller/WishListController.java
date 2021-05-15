@@ -29,6 +29,41 @@ public class WishListController {
     @Autowired
     ClientService clientService;
 
+    @PostMapping("/")
+    public WishList createWishlist(@RequestBody WishList wishList){
+        return wishListService.createWishList(wishList);
+    }
+
+    @PostMapping("/add/{id}")
+    public WishList addProduct(@PathVariable long id, @RequestParam(value = "name") String name){
+
+        Optional<Client> searchClient = clientService.getClientById(id);
+        Optional<Product> searchProduct = productService.exibirProduto(name);
+
+        if(searchClient.isPresent()) {
+            Long wishlist = wishListService.getWishlist(searchClient.get()).getID();
+
+            return wishListService.addWishToWishlist(wishlist, searchProduct.get());
+        }
+
+        return null;
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public WishList deleteProduct(@PathVariable long id, @RequestParam(value = "name") String name){
+
+        Optional<Client> searchClient = clientService.getClientById(id);
+        Optional<Product> searchProduct = productService.exibirProduto(name);
+
+        if(searchClient.isPresent()) {
+            Long wishlist = wishListService.getWishlist(searchClient.get()).getID();
+
+            return wishListService.deleteWishToWishlist(wishlist, searchProduct.get());
+        }
+
+        return null;
+    }
+
     // Pesquisar produto na wishlist
     @GetMapping("/find/{id}")
     public ResponseEntity<Product> findProduct(@PathVariable long id, @RequestParam(value = "name") String name){

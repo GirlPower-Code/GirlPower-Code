@@ -7,8 +7,6 @@ import com.listaDesejos.listaDesejos.repository.WishlistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class WishListService {
 
@@ -21,11 +19,25 @@ public class WishListService {
     }
 
     //mostrar a lista de desejos do cliente
-    public WishList mostrarWishList(long id){
-        return wishlistRepository.findByID(id);
-    }
-
     public WishList getWishlist(Client client){
         return wishlistRepository.findByclient(client);
+    }
+
+    public WishList createWishList(WishList wishList){
+        return wishlistRepository.save(wishList);
+    }
+
+    public WishList addWishToWishlist(long id, Product product){
+        WishList wishList = wishlistRepository.findByID(id);
+        wishList.getProduct().add(product);
+
+        return wishlistRepository.save(wishList);
+    }
+
+    public WishList deleteWishToWishlist(long id, Product product){
+        WishList wishList = wishlistRepository.findByID(id);
+        wishList.getProduct().remove(product);
+
+        return wishlistRepository.save(wishList);
     }
 }

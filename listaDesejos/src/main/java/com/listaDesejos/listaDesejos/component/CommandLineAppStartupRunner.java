@@ -44,6 +44,16 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
         clienteCarol.setPassword("123456");
         clientService.registerClient(clienteCarol);
 
+        Client clienteRaissa = new Client();
+
+        clienteRaissa.setCpf("12312312312");
+        clienteRaissa.setName("raissa");
+        clienteRaissa.setBirthday("14/07/2001");
+        clienteRaissa.setNumber("91952328");
+        clienteRaissa.setEmail("raissa@gmail.com");
+        clienteRaissa.setPassword("123456");
+        clientService.registerClient(clienteRaissa);
+
         Product product = new Product();
         product.setName("Geladeira");
         BigDecimal valor = new BigDecimal(10);
@@ -57,6 +67,13 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
         product1.setPrice(valor1);
         product1.setDescripcion("a");
         Product create1 = productService.criarProduto(product1);
+
+        Product product3 = new Product();
+        product3.setName("Panela");
+        BigDecimal valor2 = new BigDecimal(10);
+        product3.setPrice(valor2);
+        product3.setDescripcion("a");
+        productService.criarProduto(product3);
 
         products.add(create);
         products.add(create1);
