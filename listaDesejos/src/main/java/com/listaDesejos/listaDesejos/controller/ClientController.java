@@ -18,6 +18,13 @@ public class ClientController {
     @PostMapping("/register")
     public ResponseEntity<Client> registerClient(@RequestBody Client client){
         try{
+
+            Optional<Client> searchClient = Optional.ofNullable(clientService.registeredClient(client.getEmail()));
+
+            if (searchClient.isPresent()){
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            }
+
             return new ResponseEntity<>((Client) clientService.registerClient(client), HttpStatus.CREATED);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
