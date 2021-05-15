@@ -18,6 +18,4 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     //buscar produto no banco
     Product findByID(long id);
 
-    //excluir produto no banco
-    void deleteByID(long id);
 }

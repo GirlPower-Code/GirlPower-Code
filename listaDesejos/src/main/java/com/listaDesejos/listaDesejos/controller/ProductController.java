@@ -16,7 +16,6 @@ public class ProductController {
 
     //metodo que cadastra um produto no banco
     @PostMapping("/products/create")
-    @ResponseStatus(HttpStatus.CREATED) //protocolo correto pra create cod 201
     public Product addProduct(@RequestBody Product product) { //o parametro product está anotado como requestbody = corpo da requisição que é JSON vai ser convertido pra objeto Java do tipo Product
         return productService.registerProduct(product); //retorna o product que foi salvo lá no service
     }
