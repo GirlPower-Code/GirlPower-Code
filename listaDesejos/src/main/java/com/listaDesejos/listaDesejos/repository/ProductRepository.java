@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product,Long> {
@@ -16,7 +17,8 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     List<Product> findAll();
 
     //buscar produto no banco
-    Product findByID(long id);
+    Optional<Product> findByID(long id);
 
-    void deleteByID(long id);
+    //buscar produto no banco por nome
+    Product findByName(String name);
 }
