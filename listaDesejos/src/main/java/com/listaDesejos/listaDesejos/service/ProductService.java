@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -23,14 +24,13 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    //metodo que rotorna um produto específico do banco (busca por id)
-    public Product searchProduct(long id) {
+    //metodo que retorna um produto específico do banco (busca por id)
+    public Optional<Product> searchProduct(long id) {
         return productRepository.findByID(id);
     }
 
-    //metodo que exclui um produto específico do banco (por id)
-    public void deleteProduct(long id) {
-        productRepository.deleteByID(id);
+    //metodo que retorna um produto específico do banco (busca por nome)
+    public Product searchProductByName(String name) {
+        return productRepository.findByName(name);
     }
-
 }
