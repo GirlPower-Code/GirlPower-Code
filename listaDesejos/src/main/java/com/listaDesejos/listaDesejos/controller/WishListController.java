@@ -29,9 +29,13 @@ public class WishListController {
     @Autowired
     ClientService clientService;
 
-    @PostMapping("/")
-    public WishList createWishlist(@RequestBody WishList wishList){
-        return wishListService.createWishList(wishList);
+    @PostMapping("/createwishlist")
+    public ResponseEntity<WishList> createWishlist(@RequestBody WishList wishList){
+        try {
+            return new ResponseEntity<>(wishListService.createWishList(wishList), HttpStatus.CREATED);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PostMapping("/add/{id_client}/{id_prod}")
