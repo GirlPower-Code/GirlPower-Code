@@ -40,8 +40,12 @@ public class WishlistController {
             @ApiResponse(code = 400, message = "Bad request!", response = Response.class)
     })
     @PostMapping("/wishlist")
-    public WishList createWishlist(@RequestBody WishList wishList){
-        return wishListService.createWishList(wishList);
+    public ResponseEntity<WishList> createWishlist(@RequestBody WishList wishList){
+        try {
+            return new ResponseEntity<>(wishListService.createWishList(wishList), HttpStatus.CREATED);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
     //LISTAR TODOS OS PRODUTOS

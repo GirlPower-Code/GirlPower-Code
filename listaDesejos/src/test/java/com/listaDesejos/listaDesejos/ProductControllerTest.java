@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import javax.transaction.Transactional;
+import java.math.BigDecimal;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -22,21 +23,12 @@ public class ProductControllerTest {
         Product product = new Product();
         product.setName("Microondas");
         product.setDescription("Brastemp 31L");
-        product.setPrice(800.00);
+        BigDecimal valor = new BigDecimal(800.00);
+        product.setPrice(valor);
 
         Product productSave = productService.registerProduct(product);
 
         assertThat(productSave).isNotNull();
     }
-
-//    @Test
-//    void searchIdProduct() {
-//        Product product = new Product();
-//        productService.registerProduct(product);
-//
-//        Optional<Product> idProduct = productService.showProduct(product.getName());
-//
-//        assertThat(idProduct.getName()).isEqualTo(product.getName());
-//    }
 
 }

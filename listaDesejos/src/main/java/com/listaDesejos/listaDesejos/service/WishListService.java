@@ -1,10 +1,6 @@
 package com.listaDesejos.listaDesejos.service;
 
 import com.listaDesejos.listaDesejos.entity.Client;
-<<<<<<< HEAD
-=======
-import com.listaDesejos.listaDesejos.entity.Product;
->>>>>>> controller_wishlist
 import com.listaDesejos.listaDesejos.entity.WishList;
 import com.listaDesejos.listaDesejos.repository.WishlistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
