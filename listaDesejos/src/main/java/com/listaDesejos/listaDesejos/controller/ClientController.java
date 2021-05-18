@@ -1,6 +1,7 @@
 package com.listaDesejos.listaDesejos.controller;
 
 import com.listaDesejos.listaDesejos.entity.Client;
+import com.listaDesejos.listaDesejos.entity.DTO.ClientDTO;
 import com.listaDesejos.listaDesejos.service.ClientService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -34,7 +35,7 @@ public class ClientController {
                 return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
             }
 
-            return new ResponseEntity<>(clientService.registerClient(client), HttpStatus.CREATED);
+            return new ResponseEntity(ClientDTO.converter(client), HttpStatus.CREATED);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
