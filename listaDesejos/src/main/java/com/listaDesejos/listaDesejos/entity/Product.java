@@ -4,6 +4,7 @@ import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name="product")
@@ -12,7 +13,7 @@ public class Product implements Serializable {
     private static final long serialVersionUID =1l;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID;
 
     @Column
@@ -21,7 +22,7 @@ public class Product implements Serializable {
 
     @Column
     @NotNull
-    private double price;
+    private BigDecimal price;
 
     @Column
     @NotNull
@@ -43,11 +44,11 @@ public class Product implements Serializable {
         this.name = name;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

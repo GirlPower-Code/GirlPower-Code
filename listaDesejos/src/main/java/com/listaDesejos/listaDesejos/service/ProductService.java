@@ -24,8 +24,7 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    //metodo que retorna um produto específico do banco (busca por id)
-    public Optional<Product> findProductById(long id) {
+    public Optional<Product> findProductById(long id){
         return productRepository.findByID(id);
     }
 
