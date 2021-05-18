@@ -12,14 +12,13 @@ public class WishListService {
     @Autowired
     private WishlistRepository wishlistRepository;
 
-
     //add wishlis no banco de dados
-    public WishList adicionarWishList(WishList wishList){
+    public WishList createWishList(WishList wishList){
         return wishlistRepository.save(wishList);
     }
 
     //mostrar a lista de desejos do cliente
-    public WishList mostrarWishList(long id){
+    public WishList findByID(long id){
         return wishlistRepository.findByID(id);
     }
 

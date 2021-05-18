@@ -25,12 +25,12 @@ public class ProductService {
     }
 
     //metodo que retorna um produto específico do banco (busca por id)
-    public Optional<Product> searchProduct(long id) {
+    public Optional<Product> findProductById(long id) {
         return productRepository.findByID(id);
     }
 
     //metodo que retorna um produto específico do banco (busca por nome)
-    public Product searchProductByName(String name) {
+    public Optional<Product> searchProductByName(String name) {
         return productRepository.findByName(name);
     }
 }

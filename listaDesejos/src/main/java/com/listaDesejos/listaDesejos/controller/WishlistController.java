@@ -33,7 +33,6 @@ public class WishlistController {
     @Autowired
     ProductService productService;
 
-
     //CRIAR WISHLIST
     @ApiOperation(value = "Criar a Wishlist")
     @ApiResponses(value = {
@@ -44,7 +43,6 @@ public class WishlistController {
     public WishList createWishlist(@RequestBody WishList wishList){
         return wishListService.createWishList(wishList);
     }
-
 
     //LISTAR TODOS OS PRODUTOS
     @ApiOperation(value = "Listar produtos da Wishlist")
@@ -104,7 +102,7 @@ public class WishlistController {
                             listadeProd.add(searchProduct.get());
                             wishList.setProduct(listadeProd);
                             WishList wishListNova = wishListService.createWishList(wishList);
-                            return new ResponseEntity<>(HttpStatus.OK);
+                            return new ResponseEntity<>(wishListNova,HttpStatus.OK);
                         }
                     }
                 }
@@ -126,6 +124,7 @@ public class WishlistController {
             @ApiResponse(code = 404, message = "Não é possivel remover, produto não existe em sua lista de desejos", response = Response.class),
             @ApiResponse(code = 400, message = "Bad request!", response = Response.class)
     })
+
     @PutMapping("/wishlist/delete/{id_client}/{id_prod}")
     public ResponseEntity<WishList> deleteProduct(@PathVariable long id_client, @PathVariable long id_prod) {
         try {
@@ -159,7 +158,6 @@ public class WishlistController {
 
     }
 
-
     // PESQUISAR UM PRODUTO PELO NOME
     @ApiOperation(value = "Buscar produto na Wishlist")
     @ApiResponses(value = {
@@ -173,7 +171,7 @@ public class WishlistController {
         log.info("Acessando rota de buscar produto pelo nome");
 
         try {
-            Optional<Product> searchProduct = productService.showProduct(name);
+            Optional<Product> searchProduct = productService.searchProductByName(name);
             Optional<Client> searchClient = clientService.getClientById(id);
 
             if( searchProduct.isPresent() && searchClient.isPresent()){
@@ -189,7 +187,7 @@ public class WishlistController {
 
                             log.info("Produto encontrado e retornado");
 
-                            return new ResponseEntity<>(product, HttpStatus.OK);
+                            return new ResponseEntity<>(productFound, HttpStatus.OK);
                         }
                     }
                 }

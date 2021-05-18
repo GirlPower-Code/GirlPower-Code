@@ -43,19 +43,19 @@ public class ProductController {
     }
 
 
-//    @ApiOperation(value = "Retornar todos os produtos")
-//    @ApiResponses(value = {
-//            @ApiResponse(code = 200, message = "Produtos retornados com sucesso", response = Response.class),
-//            @ApiResponse(code = 204, message = "Nenhum produto cadastrado", response = Response.class),
-//            @ApiResponse(code = 400, message = "Bad request!", response = Response.class)
-//    })
-//    @GetMapping("/products")
+    @ApiOperation(value = "Retornar todos os produtos")
+    @ApiResponses(value = {
+             @ApiResponse(code = 200, message = "Produtos retornados com sucesso", response = Response.class),
+            @ApiResponse(code = 204, message = "Nenhum produto cadastrado", response = Response.class),
+            @ApiResponse(code = 400, message = "Bad request!", response = Response.class)
+    })
+    @GetMapping("/products")
     public ResponseEntity<?> listAllProducts() {
 
         try{
             List<Product> allProducts = productService.getAllProducts();
 
-            if (allProducts.isEmpty() ) {
+            if (allProducts.isEmpty()) {
                 System.out.println("Nenhum produto cadastrado.");
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
@@ -67,13 +67,13 @@ public class ProductController {
     }
 
 
-//    @ApiOperation(value = "Retornar um determinado produto")
-//    @ApiResponses(value = {
-//            @ApiResponse(code = 302, message = "Produto encontrado", response = Response.class),
-//            @ApiResponse(code = 404, message = "Esse produto não está cadastrado", response = Response.class),
-//            @ApiResponse(code = 400, message = "Bad request!", response = Response.class)
-//    })
-//    @GetMapping("/products/{id}")
+    @ApiOperation(value = "Retornar um determinado produto")
+    @ApiResponses(value = {
+            @ApiResponse(code = 302, message = "Produto encontrado", response = Response.class),
+            @ApiResponse(code = 404, message = "Esse produto não está cadastrado", response = Response.class),
+            @ApiResponse(code = 400, message = "Bad request!", response = Response.class)
+    })
+    @GetMapping("/products/{id}")
     public ResponseEntity<?> oneProduct(@PathVariable long id) {
 
         try{
