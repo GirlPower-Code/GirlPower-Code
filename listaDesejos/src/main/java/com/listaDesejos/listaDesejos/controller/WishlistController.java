@@ -54,24 +54,23 @@ public class WishlistController {
             @ApiResponse(code = 400, message = "Bad request!", response = Response.class)
     })
     @GetMapping("/wishlist/{id}")
-    public ResponseEntity<?> allProductsWishlist(@PathVariable long id) {
-        log.info("Produtos da wishlist");
-        try{
+    public ResponseEntity<List<Product>> listProducts(@PathVariable long id){
+
+        try {
             Optional<Client> searchClient = clientService.getClientById(id);
 
             if (searchClient.isPresent()) {
-                List<Product> products = wishListService.getWishlist(searchClient.get()).getProduct();
-                log.info("Produto encontrado e retornado");
-                return new ResponseEntity<>(products, HttpStatus.OK);
+                List<Product> wishlist = wishListService.getWishlist(searchClient.get()).getProduct();
+
+                return new ResponseEntity<>(wishlist,HttpStatus.OK);
+            }else {
+
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
-            log.info("Nenhum produto adicionado");
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
         }catch (Exception e) {
-            log.error("Falha ao fazer requisicao de listar produtos da Wishlist");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-
     }
 
 
