@@ -3,6 +3,8 @@ package com.listaDesejos.listaDesejos;
 import com.listaDesejos.listaDesejos.entity.Client;
 import com.listaDesejos.listaDesejos.entity.Product;
 import com.listaDesejos.listaDesejos.entity.WishList;
+import com.listaDesejos.listaDesejos.service.ClientService;
+import com.listaDesejos.listaDesejos.service.ProductService;
 import com.listaDesejos.listaDesejos.service.WishListService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +25,11 @@ public class WishListControllerTest {
     @Autowired
     WishListService wishListServiceTeste;
 
+    @Autowired
+    ClientService clientServiceTeste;
 
+    @Autowired
+    ProductService productServiceTeste;
 
     @Test
     void criarWishListdoCliente(){
@@ -59,8 +65,6 @@ public class WishListControllerTest {
 
         //Resultado
          assertThat(wishList.getProduct().contains(product)).isTrue();
-
-
 
     }
 
@@ -154,7 +158,6 @@ public class WishListControllerTest {
     @Test
     void pegarWishList(){
 
-
         List<Product> prod = new ArrayList<>();
         WishList wishList = new WishList();
         Client clienteRaissa = new Client();
@@ -165,32 +168,34 @@ public class WishListControllerTest {
         clienteRaissa.setNumber("919516128");
         clienteRaissa.setEmail("raissao@gmail.com");
         clienteRaissa.setPassword("1556");
+        Client client = clientServiceTeste.registerClient(clienteRaissa);
 
         Product product = new Product();
         product.setName("Celular");
         BigDecimal valor = new BigDecimal(1800);
         product.setPrice(valor);
         product.setDescripcion("Motorola");
+        Product createProduct1 = productServiceTeste.criarProduto(product);
 
         Product product1 = new Product();
         product.setName("Computador");
         BigDecimal v = new BigDecimal(50000);
         product.setPrice(v);
         product.setDescripcion("Acer");
+        Product createProduct2 = productServiceTeste.criarProduto(product1);
 
-        prod.add(product);
-        prod.add(product1);
+        prod.add(createProduct1);
+        prod.add(createProduct2);
 
-
-        wishList.setClient(clienteRaissa);
+        wishList.setClient(client);
         wishList.setProduct(prod);
 
         wishListServiceTeste.createWishList(wishList);
 
         //WishList wishList1= wishListServiceTeste.getWishlist(wishList.getClient());
-        WishList wishList1= wishListServiceTeste.findByID(wishList.getID());
+        WishList wishList1= wishListServiceTeste.getWishlist(wishList.getClient());
 
-        assertThat(wishList1.getProduct().size()).isEqualTo(wishList);
+        assertThat(wishList1.getProduct().size()).isEqualTo(wishList.getProduct().size());
 
     }
 
