@@ -6,6 +6,8 @@ import com.listaDesejos.listaDesejos.entity.WishList;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface WishlistRepository extends JpaRepository<WishList, Long> {
 
@@ -15,7 +17,11 @@ public interface WishlistRepository extends JpaRepository<WishList, Long> {
 
     WishList findByclient(Client client);
 
+
     WishList deleteByID(long id);
+
+
+
 
 
 

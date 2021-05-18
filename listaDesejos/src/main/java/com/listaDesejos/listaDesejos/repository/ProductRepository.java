@@ -13,12 +13,17 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     Product save(Product product);
 
     //exibir produto
-    Product findByID(long ID);
+
+    Optional <Product> findByID(long ID);
 
 
 
   Optional <Product> deleteById(long id);
 
+
+
+
+    Optional<Product> findByname(String name);
 
 
 }

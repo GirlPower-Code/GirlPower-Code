@@ -1,5 +1,6 @@
 package com.listaDesejos.listaDesejos.service;
 
+import com.listaDesejos.listaDesejos.entity.Client;
 import com.listaDesejos.listaDesejos.entity.Product;
 import com.listaDesejos.listaDesejos.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +20,14 @@ public class ProductService {
     }
 
     //exibir produto
-    public Product exibirProduto(long id) {
+    public Optional<Product> exibirProduto(String name) {
+        return productRepository.findByname(name);
+    }
+
+    public Optional<Product> findProductById(long id){
         return productRepository.findByID(id);
     }
+    public Optional<Product> getProductById(long id) {return productRepository.findByID(id); }
 
     //deletar produto
     public Optional<Product> deletarProduto(long id) { return productRepository.deleteById(id);}
