@@ -18,7 +18,7 @@ public class WishList implements Serializable {
     @JoinColumn (name= "idClient")
     private Client client;
 
-    @OneToMany
+    @ManyToMany
     @Column (name="idProduct")
     private List<Product> product;
 
