@@ -1,5 +1,6 @@
 package com.listaDesejos.listaDesejos.service;
 
+import com.listaDesejos.listaDesejos.entity.Client;
 import com.listaDesejos.listaDesejos.entity.WishList;
 import com.listaDesejos.listaDesejos.repository.WishlistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +23,7 @@ public class WishListService {
         return wishlistRepository.findByID(id);
     }
 
-
-
-
-
-
-
+    public WishList getWishlist(Client client) {
+        return wishlistRepository.findByclient(client);
+    }
 }

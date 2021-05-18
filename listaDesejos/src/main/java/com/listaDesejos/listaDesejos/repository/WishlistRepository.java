@@ -11,6 +11,7 @@ public interface WishlistRepository extends JpaRepository<WishList, Long> {
     WishList save(WishList wishList);
 
     WishList findByID(long id);
-    // WishList findAllByClient(Client client);
+
+    WishList findByclient(Client client);
 
 }

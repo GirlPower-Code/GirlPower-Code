@@ -23,4 +23,7 @@ public class ClientService {
         return clientRepository.findByEmail(email);
     }
 
+    public Optional<Client> registeredClientId(long id) {
+        return clientRepository.findByID(id);
+    }
 }

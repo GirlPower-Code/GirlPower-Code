@@ -29,10 +29,6 @@ public class WishlistController {
     @Autowired
     ProductService productService;
 
-
-
-
-
     //Retornar todos os produtos da wishlist
     @GetMapping("/{id}")
     public ResponseEntity<?> allProductsWishlist(@PathVariable long id) {
