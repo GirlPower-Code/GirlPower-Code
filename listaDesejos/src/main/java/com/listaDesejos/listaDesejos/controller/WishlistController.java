@@ -90,7 +90,7 @@ public class WishlistController {
             Optional<Product> searchProduct = productService.findProductById(id_prod);
 
 
-            if( searchClient.isPresent() && searchClient.isPresent()){
+            if( searchClient.isPresent() && searchProduct.isPresent()){
                 Long id_wishlist = wishListService.getWishlist(searchClient.get()).getID();
                 WishList wishList= wishListService.findByID(id_wishlist);
 
