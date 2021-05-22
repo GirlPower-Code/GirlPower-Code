@@ -38,7 +38,7 @@
 <!-- ABOUT THE PROJECT -->
 ## Sobre o projeto
 
-A API de Wishlist centraliza informações sobre wishlist de clientes. Permitindo que os usuários consigam fazer cadastrados e acesso às informações conforme for solicitado.
+A API de Wishlist centraliza informações sobre wishlist de clientes. Permitindo que os usuários consigam fazer cadastros e acesso às informações conforme for solicitado.
 
 ![swagger-completo-screenshot][swagger-completo-screenshot]
 
@@ -54,7 +54,9 @@ A arquitetura do projeto é formada por:
 O projeto foi criado usando as seguintes tecnologias:
 * Java 11
 * Spring framework
-* Bando de dados MySQL
+* Banco de dados MySQL
+* Heroku
+* Intellij
 
 Para organização das atividades e divisão de tarefas usou-se:
 * Trello
@@ -72,15 +74,19 @@ Siga as instruções para executar a API.
    ```sh
    git clone https://github.com/GirlPower-Code/GirlPower-Code.git
    ```
-2. Excute o projeto por qualquer IDE
+2. Navegue até a pasta listaDesejos
+   ```sh
+   cd listaDesejos
+   ```
+3. Excute o projeto por qualquer IDE
    ```sh
    run
    ```
-3. Acesse os endpoints
+4. Acesse os endpoints
    ```sh
    Postman / Insomnia 
    ```
-4. Acesse o Swagger
+5. Acesse o Swagger
    ```sh
    http://localhost:8080/swagger-ui.html
    ```
@@ -102,13 +108,13 @@ _Wishlist Endpoints_
 <!-- CONTACT -->
 ## Contatos
 
-Alice Pizzeta - [alice-pizetta](https://github.com/alice-pizetta) - alicepizetta13@hotmail.com
+Alice Pizetta - [alice-pizetta](https://github.com/alice-pizetta) - alicepizetta13@hotmail.com
 
 LinkedIn: [/alicepizzeta](https://www.linkedin.com/in/alice-pizetta/)
 
 Carolina Ribeiro: [Cacaulribeiro](https://github.com/Cacaulribeiro) - ribeirocarolina767@gmail.com
 
-LinkedIn: [/carolineribeiro](https://www.linkedin.com/in/carolina-ribeiro-438b52112/)
+LinkedIn: [/carolinaribeiro](https://www.linkedin.com/in/carolina-ribeiro-438b52112/)
 
 Jacqueline Sales: [jacquesales](https://github.com/jacquesales) - tendencce@gmail.com
 
