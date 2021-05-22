@@ -35,7 +35,8 @@ public class ClientController {
                 return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
             }
 
-            return new ResponseEntity(ClientDTO.converter(client), HttpStatus.CREATED);
+            Client saveClient = clientService.registerClient(client);
+            return new ResponseEntity(ClientDTO.converter(saveClient), HttpStatus.CREATED);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
